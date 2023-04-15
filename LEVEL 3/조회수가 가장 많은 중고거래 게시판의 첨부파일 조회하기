@@ -1,4 +1,3 @@
--- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/164671
 SELECT CONCAT('/home/grep/src/',board.board_id,'/',file.file_id,file.file_name,file.file_ext) AS FILE_PATH
 FROM USED_GOODS_BOARD AS board
     JOIN USED_GOODS_FILE AS file ON board.board_id = file.board_id
