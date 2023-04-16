@@ -1,0 +1,10 @@
+SELECT YEAR(sales_date) AS year, MONTH(sales_date) AS month
+    , COUNT(DISTINCT user.user_id) AS PUCHASED_USERS
+    , ROUND(COUNT(DISTINCT user.user_id) 
+    / (SELECT COUNT(DISTINCT user_id) FROM user_info WHERE YEAR(joined) = 2021),1) AS PUCHASED_RATIO
+FROM online_sale AS sales
+    JOIN user_info AS user ON sales.user_id = user.user_id
+WHERE YEAR(joined) = 2021
+GROUP BY YEAR(sales_date), MONTH(sales_date)
+
+# USER_INFO 테이블에는 있지만 ONLINE_SALE 테이블에는 없는 USER_ID 가 있음
