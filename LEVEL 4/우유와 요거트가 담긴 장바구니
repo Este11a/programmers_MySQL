@@ -1,0 +1,9 @@
+WITH milk AS (SELECT *
+              FROM cart_products
+              WHERE name = "Milk")
+              
+SELECT yogurt.cart_id
+FROM cart_products AS yogurt
+    INNER JOIN milk ON milk.cart_id = yogurt.cart_id
+WHERE yogurt.name = "Yogurt"
+GROUP BY yogurt.cart_id
