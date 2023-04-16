@@ -1,0 +1,10 @@
+WITH sales AS (SELECT writer_id, SUM(price) AS total_sales
+                           FROM used_goods_board
+                           WHERE status = 'DONE'
+                           GROUP BY writer_id)
+
+SELECT user_id, nickname, total_sales
+FROM used_goods_user AS user
+    LEFT JOIN sales ON user.user_id = sales.writer_id
+WHERE total_sales >= 700000
+ORDER BY total_sales
